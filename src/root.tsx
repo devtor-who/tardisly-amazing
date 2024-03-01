@@ -1,8 +1,13 @@
-import { component$ } from '@builder.io/qwik';
-import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
-import { RouterHead } from './components/router-head/router-head';
-
-import './global.css';
+import { component$ } from "@builder.io/qwik";
+import {
+  QwikCityProvider,
+  RouterOutlet,
+  ServiceWorkerRegister,
+} from "@builder.io/qwik-city";
+import { RouterHead } from "./components/router-head/router-head";
+import "./global.css";
+import { WebThemeScript } from "./components/web-theme/web-theme-script";
+import { cn } from "./libs/style.util";
 
 export default component$(() => {
   /**
@@ -17,9 +22,16 @@ export default component$(() => {
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
+        <WebThemeScript />
         <RouterHead />
       </head>
-      <body lang="ko">
+      <body
+        class={cn(
+          "transition-colors duration-200",
+          "bg-white text-slate-800",
+          "dark:bg-slate-950 dark:text-slate-100",
+        )}
+      >
         <RouterOutlet />
         <ServiceWorkerRegister />
       </body>
