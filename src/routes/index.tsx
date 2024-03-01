@@ -14,7 +14,8 @@ export const head: DocumentHead = {
 export default component$(() => {
   return (
     <>
-      <h1>Hi 👋</h1>
+      <h1 class="font-gowun-dodum">안녕하세요~!! 👋</h1>
+      <p class="font-ibm-plex-sans-kr">한글로 이것저것 써보기</p>
       <p class="font-madimi-one">
         Can't wait to see what you build with qwik!
         <br />
