@@ -1,13 +1,13 @@
-import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { WebThemeToggle } from "~/components/web-theme/web-theme-toggle";
+import { component$ } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { WebThemeToggle } from '~/components/web-theme/web-theme-toggle';
 
 export const head: DocumentHead = {
-  title: "Tardisly-Amazing!!",
+  title: 'Tardisly-Amazing!!',
   meta: [
     {
-      name: "Tardisly-Amazing!!",
-      content: "Tardisly-Amazing!!",
+      name: 'Tardisly-Amazing!!',
+      content: 'Tardisly-Amazing!!',
     },
   ],
 };

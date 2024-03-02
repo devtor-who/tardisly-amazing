@@ -1,5 +1,5 @@
-import { component$ } from "@builder.io/qwik";
-import { DEFAULT_WEB_THEME, WEB_THEME_KEY } from "./web-theme.hook";
+import { component$ } from '@builder.io/qwik';
+import { DEFAULT_WEB_THEME, WEB_THEME_KEY } from './web-theme.hook';
 
 export const WebThemeScript = component$(() => {
   const scriptText = `

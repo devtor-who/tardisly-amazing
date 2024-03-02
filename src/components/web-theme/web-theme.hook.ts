@@ -1,12 +1,12 @@
-import { $, useSignal } from "@builder.io/qwik";
-import { mustOnBrowser } from "~/libs/runtime.util";
+import { $, useSignal } from '@builder.io/qwik';
+import { mustOnBrowser } from '~/libs/runtime.util';
 
 /**
  * 브라우저 Theme Enum
  */
 export const WEB_THEME = {
-  light: "light",
-  dark: "dark",
+  light: 'light',
+  dark: 'dark',
 } as const;
 export type WEB_THEME = (typeof WEB_THEME)[keyof typeof WEB_THEME];
 
@@ -16,7 +16,7 @@ export type WEB_THEME = (typeof WEB_THEME)[keyof typeof WEB_THEME];
  * localStorage.getItem(WEB_THEME_KEY);
  * // => localStorage.getItem("WEB_THEME");
  */
-export const WEB_THEME_KEY = "WEB_THEME";
+export const WEB_THEME_KEY = 'WEB_THEME';
 
 /**
  * 기본 브라우저 Theme

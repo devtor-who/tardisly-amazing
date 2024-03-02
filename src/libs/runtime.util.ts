@@ -1,4 +1,4 @@
-import { isBrowser, isServer } from "@builder.io/qwik/build";
+import { isBrowser, isServer } from '@builder.io/qwik/build';
 
 /**
  * 하위 코드들이 브라우저에서 동작하는지 확인
@@ -7,7 +7,7 @@ import { isBrowser, isServer } from "@builder.io/qwik/build";
  */
 export function mustOnBrowser(errorMessage?: string) {
   if (!isBrowser) {
-    throw new Error(errorMessage || "Must Run On Browser");
+    throw new Error(errorMessage || 'Must Run On Browser');
   }
 }
 
@@ -18,6 +18,6 @@ export function mustOnBrowser(errorMessage?: string) {
  */
 export function mustOnServer(errorMessage?: string) {
   if (!isServer) {
-    throw new Error(errorMessage || "Must Run On Server");
+    throw new Error(errorMessage || 'Must Run On Server');
   }
 }
