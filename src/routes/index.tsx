@@ -1,15 +1,13 @@
-import { component$ } from '@builder.io/qwik';
 import {
-  routeLoader$,
-  type DocumentHead,
-  routeAction$,
-  zod$,
-  z,
-  Form,
-} from '@builder.io/qwik-city';
-import { WebThemeToggle } from '~/components/web-theme/web-theme-toggle';
-import { createSupabaseDB } from '~/libs/db.util';
+  component$,
+  useSignal,
+  useStore,
+  useVisibleTask$,
+} from '@builder.io/qwik';
+import { useNavigate, type DocumentHead } from '@builder.io/qwik-city';
+import { concat, concatMap, delay, from, interval, map, of, take } from 'rxjs';
 import { cn } from '~/libs/style.util';
+import styles from './style.module.css';
 
 export const head: DocumentHead = {
   title: 'Tardisly-Amazing!!',
@@ -21,77 +19,88 @@ export const head: DocumentHead = {
   ],
 };
 
-export const useGetUser = routeLoader$(async (requestEv) => {
-  const supabaseClient = createSupabaseDB(requestEv);
-
-  const { data } = await supabaseClient.from('user').select('*');
-  return data || [];
-});
-
-export const useCreateUser = routeAction$(
-  async (data, requestEv) => {
-    const supabaseClient = createSupabaseDB(requestEv);
-
-    const user = await supabaseClient.from('user').insert(data);
-    return user;
-  },
-  zod$({
-    name: z.string(),
-    email: z.string().email(),
-  }),
-);
-
 export default component$(() => {
-  const users = useGetUser();
-  const createUserAction = useCreateUser();
+  const nav = useNavigate();
+  const typeWriteDoneSig = useSignal(false);
+  const lines = [
+    'Never Cruel,',
+    'Never Cowardly.',
+    'Never Give up,',
+    'Never Give in.',
+  ];
+
+  const linesStore = useStore<string[]>(lines.map(() => ''));
+
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(() => {
+    from(lines)
+      .pipe(
+        concatMap((word, i) =>
+          concat(
+            interval(50).pipe(
+              map((x) => (linesStore[i] = word.substring(0, x + 1))),
+              take(word.length),
+            ),
+            of('').pipe(delay(i < lines.length - 1 ? 250 : 100)),
+          ),
+        ),
+      )
+      .subscribe({
+        complete() {
+          typeWriteDoneSig.value = true;
+        },
+      });
+  });
 
   return (
-    <>
-      <h1>안녕하세요~!! 👋</h1>
-      <WebThemeToggle />
-      <p>한글로 이것저것 써보기</p>
-      <p class="font-madimi-one">
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </p>
-
-      <div>
-        <Form action={createUserAction}>
-          <label>
-            Name
-            <input
-              class={cn(
-                'border-b bg-transparent',
-                'border-b-neutral-950 dark:border-b-neutral-100',
-              )}
-              name="name"
-              value={createUserAction.formData?.get('name')}
-            />
-          </label>
-          <label>
-            Email
-            <input
-              class={cn(
-                'border-b bg-transparent',
-                'border-b-neutral-950 dark:border-b-neutral-100',
-              )}
-              name="email"
-              value={createUserAction.formData?.get('email')}
-            />
-          </label>
-          <button type="submit">Create</button>
-        </Form>
-      </div>
-
-      <div>
-        DB 데이터 Fetch 테스트!!
-        {users.value.map((user) => (
-          <div key={user.id}>
-            {user.id} / {user.email} / {user.name}
-          </div>
-        ))}
-      </div>
-    </>
+    <main class={[cn('h-dvh px-4'), styles.background]}>
+      <section
+        class={[
+          cn(
+            'container mx-auto h-full',
+            'grid grid-rows-2 items-center lg:grid-cols-2 lg:grid-rows-1',
+          ),
+        ]}
+      >
+        <article class={cn('space-y-8 lg:space-y-12')}>
+          <h1
+            class={cn(
+              'text-3xl md:text-5xl lg:text-6xl xl:text-7xl',
+              'font-playfair font-semibold italic',
+              'leading-tight tracking-wider',
+            )}
+          >
+            {linesStore.map((text, i) => (
+              <div key={i}>
+                {text} <span class="opacity-0">{i}</span>
+              </div>
+            ))}
+          </h1>
+          <h3
+            class={cn(
+              'text-sm text-neutral-400 opacity-0 lg:text-base',
+              typeWriteDoneSig.value && 'animate-fade-up',
+            )}
+          >
+            원하는 메뉴를 선택해보세요
+          </h3>
+        </article>
+        <article class={cn('flex justify-center', 'mx-auto w-full max-w-md ')}>
+          <button
+            class={cn(
+              'opacity-0',
+              'font-poppins text-sm font-semibold dark:bg-neutral-300 dark:text-neutral-900 lg:text-base',
+              'w-full rounded-md p-2',
+              typeWriteDoneSig.value
+                ? 'animate-fade-up animate-delay-700'
+                : 'pointer-events-none',
+            )}
+            onClick$={() => nav('/games')}
+          >
+            Games
+          </button>
+        </article>
+      </section>
+    </main>
   );
 });

@@ -1,0 +1,17 @@
+.background {
+  background: linear-gradient(
+    -25deg,
+    theme('colors.neutral.900') 50%,
+    theme('colors.neutral.950') 50%
+  );
+}
+
+@media screen and (min-width: 1024px) {
+  .background {
+    background: linear-gradient(
+      -60deg,
+      theme('colors.neutral.900') 50%,
+      theme('colors.neutral.950') 50%
+    );
+  }
+}

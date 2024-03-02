@@ -8,16 +8,24 @@ export default {
     extend: {},
   },
   plugins: [
+    require('tailwindcss-animated'),
     plugin(function ({ addBase, addComponents, addUtilities, theme }) {
       addUtilities({
         '.font-ibm-plex-sans-kr': {
           fontFamily: '"IBM Plex Sans KR", sans-serif',
         },
-        '.font-gowun-dodum': {
-          fontFamily: '"Gowun Dodum", sans-serif',
+        '.font-ibm-plex-sans': {
+          fontFamily: '"IBM Plex Sans", sans-serif',
+        },
+        '.font-poppins': {
+          fontFamily: '"Poppins", sans-serif',
         },
         '.font-madimi-one': {
           fontFamily: '"Madimi One", sans-serif',
+        },
+        '.font-playfair': {
+          fontFamily: '"Playfair Display", serif',
+          fontOpticalSizing: 'auto',
         },
       });
     }),

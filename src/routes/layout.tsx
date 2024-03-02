@@ -1,5 +1,12 @@
-import { component$, Slot } from '@builder.io/qwik';
-import type { RequestHandler } from '@builder.io/qwik-city';
+import {
+  component$,
+  Slot,
+  useSignal,
+  useTask$,
+  useVisibleTask$,
+} from '@builder.io/qwik';
+import { useLocation, type RequestHandler } from '@builder.io/qwik-city';
+import { cn } from '~/libs/style.util';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -13,5 +20,24 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  return <Slot />;
+  const isPageRender = useSignal(true);
+
+  const location = useLocation();
+  useTask$(({ track }) => {
+    track(() => location.url);
+    isPageRender.value = false;
+  });
+
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ track }) => {
+    track(() => location.url);
+    setTimeout(() => {
+      isPageRender.value = true;
+    }, 200);
+  });
+  return (
+    <div class={cn(isPageRender.value ? 'animate-fade-down' : 'opacity-0')}>
+      <Slot />
+    </div>
+  );
 });
