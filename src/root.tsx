@@ -1,5 +1,9 @@
 import { component$ } from '@builder.io/qwik';
-import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
+import {
+  QwikCityProvider,
+  RouterOutlet,
+  ServiceWorkerRegister,
+} from '@builder.io/qwik-city';
 import { RouterHead } from './components/router-head/router-head';
 import './global.css';
 import { WebThemeScript } from './components/web-theme/web-theme-script';
@@ -25,7 +29,11 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body
-        class={cn('transition-colors duration-200', 'bg-white text-slate-800', 'dark:bg-slate-950 dark:text-slate-100')}
+        class={cn(
+          'transition-colors duration-200',
+          'bg-white text-slate-800',
+          'dark:bg-slate-950 dark:text-slate-100',
+        )}
       >
         <RouterOutlet />
         <ServiceWorkerRegister />
