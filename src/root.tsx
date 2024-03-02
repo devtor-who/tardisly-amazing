@@ -30,6 +30,7 @@ export default component$(() => {
       </head>
       <body
         class={cn(
+          'font-ibm-plex-sans-kr',
           'transition-colors duration-200',
           'bg-white text-neutral-800',
           'dark:bg-neutral-950 dark:text-neutral-100',
