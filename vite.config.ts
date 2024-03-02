@@ -16,5 +16,10 @@ export default defineConfig((): UserConfig => {
         "Cache-Control": "public, max-age=600",
       },
     },
+    resolve: {
+      alias: {
+        ".prisma/client": "/node_modules/.prisma/client"
+      }
+    }
   };
 });
