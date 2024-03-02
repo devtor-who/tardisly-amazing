@@ -25,11 +25,8 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body
-        class={cn(
-          'transition-colors duration-200',
-          'bg-white text-slate-800',
-          'dark:bg-slate-950 dark:text-slate-100',
-        )}>
+        class={cn('transition-colors duration-200', 'bg-white text-slate-800', 'dark:bg-slate-950 dark:text-slate-100')}
+      >
         <RouterOutlet />
         <ServiceWorkerRegister />
       </body>

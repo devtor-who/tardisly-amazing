@@ -20,7 +20,8 @@ export const WebThemeToggle = component$(() => {
     <div>
       <button
         class={cn('text-2xl')}
-        onClick$={toggleThemeAction}>
+        onClick$={toggleThemeAction}
+      >
         {isDarkThemeSig.value ? <LuSun /> : <LuMoon />}
       </button>
     </div>
