@@ -31,8 +31,8 @@ export default component$(() => {
       <body
         class={cn(
           'transition-colors duration-200',
-          'bg-white text-slate-800',
-          'dark:bg-slate-950 dark:text-slate-100',
+          'bg-white text-neutral-800',
+          'dark:bg-neutral-950 dark:text-neutral-100',
         )}
       >
         <RouterOutlet />
