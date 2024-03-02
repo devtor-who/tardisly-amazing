@@ -8,7 +8,7 @@ import {
   Form,
 } from '@builder.io/qwik-city';
 import { WebThemeToggle } from '~/components/web-theme/web-theme-toggle';
-import { db } from '~/libs/db.util';
+import { createSupabaseDB } from '~/libs/db.util';
 import { cn } from '~/libs/style.util';
 
 export const head: DocumentHead = {
@@ -21,16 +21,18 @@ export const head: DocumentHead = {
   ],
 };
 
-export const useGetUser = routeLoader$(async () => {
-  const users = await db.user.findMany();
-  return users;
+export const useGetUser = routeLoader$(async (requestEv) => {
+  const supabaseClient = createSupabaseDB(requestEv);
+
+  const { data } = await supabaseClient.from('user').select('*');
+  return data || [];
 });
 
 export const useCreateUser = routeAction$(
-  async (data) => {
-    const user = await db.user.create({
-      data,
-    });
+  async (data, requestEv) => {
+    const supabaseClient = createSupabaseDB(requestEv);
+
+    const user = await supabaseClient.from('user').insert(data);
     return user;
   },
   zod$({
