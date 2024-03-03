@@ -1,6 +1,6 @@
-import { RequestEventAction } from '@builder.io/qwik-city';
+import type { RequestEventAction } from '@builder.io/qwik-city';
 import { createServerClient } from 'supabase-auth-helpers-qwik';
-import { Database } from '~/types/supabase';
+import type { Database } from '~/types/supabase';
 
 export const createSupabaseDB = (
   requestEv: RequestEventAction<QwikCityPlatform>,

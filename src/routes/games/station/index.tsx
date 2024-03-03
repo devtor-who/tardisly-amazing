@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
-import { RequestHandler, routeLoader$ } from '@builder.io/qwik-city';
+import type { RequestHandler } from '@builder.io/qwik-city';
+import { routeLoader$ } from '@builder.io/qwik-city';
 
 export const onRequest: RequestHandler = async (requestEv) => {
   const { next, redirect, cookie } = requestEv;

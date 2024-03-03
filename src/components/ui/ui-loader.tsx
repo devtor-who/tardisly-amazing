@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 
 export type UiLoaderProps = {};
 
-export const UiLoader = component$<UiLoaderProps>((props) => {
+export const UiLoader = component$<UiLoaderProps>(() => {
   return (
     <div role="status">
       <svg

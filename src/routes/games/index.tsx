@@ -9,7 +9,7 @@ const validCodes = ['test'];
 
 export const useVisitorCodeAction = routeAction$(
   async (data, requestEv) => {
-    await new Promise((resolve, reject) => {
+    await new Promise((resolve) => {
       setTimeout(() => {
         resolve('');
       }, 2000);

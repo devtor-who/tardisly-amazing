@@ -1,9 +1,5 @@
-import {
-  component$,
-  FunctionComponent,
-  InputHTMLAttributes,
-  useId,
-} from '@builder.io/qwik';
+import type { InputHTMLAttributes } from '@builder.io/qwik';
+import { component$, useId } from '@builder.io/qwik';
 import { cn } from '~/libs/style.util';
 
 export type UiInputProps = InputHTMLAttributes<HTMLInputElement> & {

@@ -1,4 +1,5 @@
-import { component$, ButtonHTMLAttributes, Slot } from '@builder.io/qwik';
+import type { ButtonHTMLAttributes } from '@builder.io/qwik';
+import { component$, Slot } from '@builder.io/qwik';
 import { cn } from '~/libs/style.util';
 
 export type UiButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {};
