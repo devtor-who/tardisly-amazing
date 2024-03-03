@@ -27,7 +27,10 @@ export default component$(() => {
   useTask$(({ track }) => {
     // url이 변경될 때 마다 실행
     track(() => location.url);
-    isPageRender.value = false;
+    // 이동하는 url이 이전 url과 다른 경우
+    if (location.prevUrl?.href !== location.url.href) {
+      isPageRender.value = false;
+    }
   });
 
   // 페이지가 화면에 렌더링 된 후

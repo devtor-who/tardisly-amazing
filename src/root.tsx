@@ -33,7 +33,7 @@ export default component$(() => {
           'font-ibm-plex-sans-kr',
           'transition-colors duration-200',
           'bg-white text-neutral-800',
-          'dark:bg-neutral-950 dark:text-neutral-100',
+          'dark:bg-neutral-900 dark:text-neutral-100',
         )}
       >
         <RouterOutlet />

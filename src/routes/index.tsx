@@ -91,6 +91,7 @@ export default component$(() => {
         >
           <UiButton
             class={cn(
+              'opacity-0 font-poppins',
               typeWriteDoneSig.value
                 ? 'animate-fade-up animate-delay-700'
                 : 'pointer-events-none',
