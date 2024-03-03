@@ -21,22 +21,31 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 
 export default component$(() => {
   const isPageRender = useSignal(true);
-
   const location = useLocation();
+
+  // 페이지가 화면에 렌더링 되기 전
   useTask$(({ track }) => {
+    // url이 변경될 때 마다 실행
     track(() => location.url);
     isPageRender.value = false;
   });
 
+  // 페이지가 화면에 렌더링 된 후
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
+    // url이 변경될 때 마다 실행
     track(() => location.url);
     setTimeout(() => {
       isPageRender.value = true;
     }, 200);
   });
+
   return (
-    <div class={cn(isPageRender.value ? 'animate-fade-down' : 'opacity-0')}>
+    <div
+      class={cn(
+        isPageRender.value ? 'animate-fade-down' : 'opacity-0', // 페이지가 렌더링 되면 fade down 효과
+      )}
+    >
       <Slot />
     </div>
   );

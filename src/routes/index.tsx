@@ -8,6 +8,7 @@ import { useNavigate, type DocumentHead } from '@builder.io/qwik-city';
 import { concat, concatMap, delay, from, interval, map, of, take } from 'rxjs';
 import { cn } from '~/libs/style.util';
 import styles from './style.module.css';
+import { UiButton } from '~/components/ui/ui-button';
 
 export const head: DocumentHead = {
   title: 'Tardisly-Amazing!!',
@@ -65,8 +66,8 @@ export default component$(() => {
         <article class={cn('space-y-8 lg:space-y-12')}>
           <h1
             class={cn(
-              'text-3xl md:text-5xl lg:text-6xl xl:text-7xl',
-              'font-playfair font-semibold italic',
+              'text-3xl md:text-6xl xl:text-7xl',
+              'font-semibold italic font-playfair',
               'leading-tight tracking-wider',
             )}
           >
@@ -78,19 +79,18 @@ export default component$(() => {
           </h1>
           <h3
             class={cn(
-              'text-sm text-neutral-400 opacity-0 lg:text-base',
+              'text-sm text-neutral-400 opacity-0 md:text-base',
               typeWriteDoneSig.value && 'animate-fade-up',
             )}
           >
             원하는 메뉴를 선택해보세요
           </h3>
         </article>
-        <article class={cn('flex justify-center', 'mx-auto w-full max-w-md ')}>
-          <button
+        <article
+          class={cn('flex justify-center', 'mx-auto w-full lg:max-w-md')}
+        >
+          <UiButton
             class={cn(
-              'opacity-0',
-              'font-poppins text-sm font-semibold dark:bg-neutral-300 dark:text-neutral-900 lg:text-base',
-              'w-full rounded-md p-2',
               typeWriteDoneSig.value
                 ? 'animate-fade-up animate-delay-700'
                 : 'pointer-events-none',
@@ -98,7 +98,7 @@ export default component$(() => {
             onClick$={() => nav('/games')}
           >
             Games
-          </button>
+          </UiButton>
         </article>
       </section>
     </main>
