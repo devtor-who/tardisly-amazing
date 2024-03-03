@@ -1,9 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "qwik-project-name",
-  "short_name": "Welcome to Qwik",
+  "name": "project-TA",
+  "short_name": "Tardisly-Amazing",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "A Qwik project app."
+  "description": "Tardisly Amazing Web",
+  "icons": [
+    {
+      "src": "pwa-256.png",
+      "sizes": "256",
+      "type": "image/png"
+    }
+  ]
 }

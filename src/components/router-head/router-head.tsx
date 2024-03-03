@@ -22,8 +22,8 @@ export const RouterHead = component$(() => {
       />
       <link
         rel="icon"
-        type="image/svg+xml"
-        href="/favicon.svg"
+        type="image/x-icon"
+        href="/favicon.ico"
       />
 
       {head.meta.map((m) => (
