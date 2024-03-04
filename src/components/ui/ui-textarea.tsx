@@ -1,4 +1,5 @@
-import { TextareaHTMLAttributes, component$ } from '@builder.io/qwik';
+import type { TextareaHTMLAttributes} from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import { cn } from '~/libs/style.util';
 
 export type UiTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {};

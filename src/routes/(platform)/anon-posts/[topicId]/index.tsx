@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
 import {
-  DocumentHead,
   Form,
   routeAction$,
   routeLoader$,
@@ -15,7 +15,7 @@ import { UiTextarea } from '~/components/ui/ui-textarea';
 import { createSupabaseDB } from '~/libs/db.util';
 import { cn } from '~/libs/style.util';
 
-export const head: DocumentHead = ({ resolveValue, params }) => {
+export const head: DocumentHead = ({ resolveValue }) => {
   const topic = resolveValue(useTopic);
   const topicName = topic.data ? topic.data[0].topic_name : '';
   return {

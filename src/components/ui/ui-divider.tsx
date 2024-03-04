@@ -1,4 +1,5 @@
-import { HTMLAttributes, component$ } from '@builder.io/qwik';
+import type { HTMLAttributes} from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import { cn } from '~/libs/style.util';
 
 export type UiDividerProps = HTMLAttributes<HTMLDivElement> & {};
