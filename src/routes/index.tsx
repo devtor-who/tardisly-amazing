@@ -54,7 +54,7 @@ export default component$(() => {
   });
 
   return (
-    <main class={[cn('h-dvh px-4'), styles.background]}>
+    <section class={[cn('h-screen px-4'), styles.background]}>
       <section
         class={[
           cn(
@@ -66,20 +66,20 @@ export default component$(() => {
         <article class={cn('space-y-8 lg:space-y-12')}>
           <h1
             class={cn(
-              'text-3xl md:text-6xl xl:text-7xl',
+              'text-3xl sm:text-5xl md:text-6xl xl:text-7xl',
               'font-semibold italic font-playfair',
               'leading-tight tracking-wider',
             )}
           >
             {linesStore.map((text, i) => (
-              <div key={i}>
-                {text} <span class="opacity-0">{i}</span>
-              </div>
+              <p key={i}>
+                <span class="inline-block w-0 opacity-0">{i}</span> {text}
+              </p>
             ))}
           </h1>
           <h3
             class={cn(
-              'text-sm text-neutral-400 opacity-0 md:text-base',
+              'text-sm text-indigo-400 opacity-0 sm:text-base',
               typeWriteDoneSig.value && 'animate-fade-up',
             )}
           >
@@ -87,21 +87,36 @@ export default component$(() => {
           </h3>
         </article>
         <article
-          class={cn('flex justify-center', 'mx-auto w-full lg:max-w-md')}
+          class={cn(
+            'flex flex-col justify-center gap-y-2 sm:gap-y-4',
+            'mx-auto w-full lg:max-w-md',
+          )}
         >
           <UiButton
             class={cn(
-              'opacity-0 font-poppins',
+              'text-sm opacity-0 sm:text-base',
               typeWriteDoneSig.value
                 ? 'animate-fade-up animate-delay-700'
+                : 'pointer-events-none',
+            )}
+            onClick$={() => nav('/anon-posts')}
+          >
+            익명게시판
+          </UiButton>
+
+          {/* <UiButton
+            class={cn(
+              'text-sm opacity-0 font-poppins sm:text-base',
+              typeWriteDoneSig.value
+                ? 'animate-fade-up animate-delay-1000'
                 : 'pointer-events-none',
             )}
             onClick$={() => nav('/games')}
           >
             Games
-          </UiButton>
+          </UiButton> */}
         </article>
       </section>
-    </main>
+    </section>
   );
 });

@@ -15,8 +15,8 @@ export const UiInput = component$<UiInputProps>((props) => {
       <input
         type={type}
         class={cn(
-          'rounded-md bg-neutral-700/50 px-3 py-2 outline-none', //
-          'placeholder:text-neutral-500',
+          'rounded-md bg-indigo-700/50 px-3 py-2 outline-none', //
+          'placeholder:text-indigo-400 disabled:opacity-40',
           classList,
         )}
         {...rest}

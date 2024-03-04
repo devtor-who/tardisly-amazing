@@ -9,8 +9,8 @@ export const UiButton = component$<UiButtonProps>((props) => {
   return (
     <button
       class={cn(
-        'text-sm font-semibold dark:bg-neutral-300 dark:text-neutral-900 md:text-base',
-        'transition-colors duration-300 dark:hover:bg-neutral-300/80',
+        'bg-indigo-200 font-semibold text-indigo-950',
+        'transition-colors duration-300 hover:bg-indigo-200/80',
         'w-full rounded-md p-2',
         classList,
       )}

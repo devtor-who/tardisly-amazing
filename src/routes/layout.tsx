@@ -15,7 +15,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     // Always serve a cached response by default, up to a week stale
     staleWhileRevalidate: 60 * 60 * 24 * 7,
     // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
-    maxAge: 5,
+    maxAge: 2,
   });
 };
 
@@ -44,12 +44,12 @@ export default component$(() => {
   });
 
   return (
-    <div
+    <main
       class={cn(
         isPageRender.value ? 'animate-fade-down' : 'opacity-0', // 페이지가 렌더링 되면 fade down 효과
       )}
     >
       <Slot />
-    </div>
+    </main>
   );
 });

@@ -1,8 +1,8 @@
 .background {
   background: linear-gradient(
     -25deg,
-    theme('colors.neutral.900') 50%,
-    theme('colors.neutral.950') 50%
+    theme('colors.indigo.900') 50%,
+    theme('colors.indigo.950') 50%
   );
 }
 
@@ -10,8 +10,8 @@
   .background {
     background: linear-gradient(
       -60deg,
-      theme('colors.neutral.900') 50%,
-      theme('colors.neutral.950') 50%
+      theme('colors.indigo.900') 50%,
+      theme('colors.indigo.950') 50%
     );
   }
 }
