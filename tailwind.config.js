@@ -11,11 +11,8 @@ export default {
     require('tailwindcss-animated'),
     plugin(function ({ addBase, addComponents, addUtilities, theme }) {
       addUtilities({
-        '.font-ibm-plex-sans-kr': {
-          fontFamily: '"IBM Plex Sans KR", sans-serif',
-        },
         '.font-ibm-plex-sans': {
-          fontFamily: '"IBM Plex Sans", sans-serif',
+          fontFamily: '"IBM Plex Sans", "IBM Plex Sans KR", sans-serif',
         },
         '.font-poppins': {
           fontFamily: '"Poppins", sans-serif',
