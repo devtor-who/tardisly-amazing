@@ -179,7 +179,7 @@ export default component$(() => {
 
             <UiDivider class={cn('my-0 h-px bg-indigo-800/60 sm:my-0')} />
 
-            <section class={cn('px-2 py-3')}>{content}</section>
+            <pre class={cn('px-2 py-3 font-ibm-plex-sans')}>{content}</pre>
           </article>
         ))}
       </section>
